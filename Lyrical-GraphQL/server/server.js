@@ -2,11 +2,14 @@ const express = require('express');
 const models = require('./models');
 const expressGraphQL = require('express-graphql');
 const mongoose = require('mongoose');
+const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const schema = require('./schema/schema');
 require('dotenv').config();
 
 const app = express();
+
+app.use(morgan('dev'));
 
 // Replace with your mongoLab URI
 const MONGO_URI = process.env.MONGODB;
