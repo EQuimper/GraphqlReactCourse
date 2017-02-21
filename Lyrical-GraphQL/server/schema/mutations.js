@@ -1,5 +1,9 @@
 const graphql = require('graphql');
-const { GraphQLObjectType, GraphQLString, GraphQLID } = graphql;
+const {
+  GraphQLObjectType,
+  GraphQLString,
+  GraphQLID
+} = graphql;
 const mongoose = require('mongoose');
 const Song = mongoose.model('song');
 const Lyric = mongoose.model('lyric');
