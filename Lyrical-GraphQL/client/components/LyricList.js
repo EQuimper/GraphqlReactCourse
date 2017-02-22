@@ -3,10 +3,24 @@ import { graphql } from 'react-apollo';
 import likeLyricMutation from '../queries/likeLyric';
 
 class LyricList extends Component {
-  _toggleLiked(id) {
+  _toggleLiked(id, likes) {
     this.props.mutate({
       variables: {
         id
+      },
+      /**
+       * That help to get speed, this is for fake the ui
+       * But we get the real one after with the server
+       * If something bad happen apollo by default gonna correct it
+       * Here we say we add + 1 to the likes fields
+       */
+      optimisticResponse: {
+        __typename: 'Mutation',
+        likeLyric: {
+          id,
+          __typename: 'LyricType',
+          likes: likes + 1
+        }
       }
     });
   }
@@ -18,7 +32,7 @@ class LyricList extends Component {
         <div className="vote-box">
           <i
             className="material-icons"
-            onClick={() => this._toggleLiked(id)}
+            onClick={() => this._toggleLiked(id, likes)}
           >
             thumb_up
           </i>
