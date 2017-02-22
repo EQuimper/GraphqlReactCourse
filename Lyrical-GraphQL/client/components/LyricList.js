@@ -12,15 +12,18 @@ class LyricList extends Component {
   }
 
   _renderLyrics() {
-    return this.props.lyrics.map(({ id, content }) => (
+    return this.props.lyrics.map(({ id, content, likes }) => (
       <li key={id} className="collection-item">
         {content}
-        <i
-          className="material-icons"
-          onClick={() => this._toggleLiked(id)}
-        >
-          thumb_up
-        </i>
+        <div className="vote-box">
+          <i
+            className="material-icons"
+            onClick={() => this._toggleLiked(id)}
+          >
+            thumb_up
+          </i>
+          {likes}
+        </div>
       </li>
     ));
   }
