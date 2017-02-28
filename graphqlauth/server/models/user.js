@@ -26,7 +26,7 @@ UserSchema.pre('save', function save(next) {
       user.password = hash;
       next();
     });
-  });
+    });
 });
 
 // We need to compare the plain text password (submitted whenever logging in)
